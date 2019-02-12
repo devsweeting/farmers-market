@@ -52,7 +52,6 @@ function makeImage(image) {
 
   const imageUrl = getImages(image)
   imageUrl.then(response => {
-    // console.log(JSON.parse(response)[0].urls.small);
     return JSON.parse(response)[0].urls.small;
   });
 }
@@ -69,7 +68,7 @@ function Grid(props){
         {props.item.map((fruit,i) => (
 
           <GridListTile key={i}>
-            <img src= {makeImage(fruit)} alt={fruit} />
+            <img src={ "https://loremflickr.com/320/240/" + fruit } alt={fruit} />
             <GridListTileBar
               title={fruit}
             />
