@@ -20,9 +20,6 @@ function Panel( props ){
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
-            { props.item.map((fruit, i) =>
-              <p>{ fruit }</p>
-            )}
             <Grid item={props.item}/>
           </Typography>
         </ExpansionPanelDetails>
