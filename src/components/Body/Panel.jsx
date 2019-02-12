@@ -4,13 +4,12 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Grid from './Grid'
 
 
 
 
 function Panel( props ){
-
-  // const { item } = props
 
 
   return (
@@ -22,7 +21,9 @@ function Panel( props ){
         <ExpansionPanelDetails>
           <Typography>
             { props.item.map((fruit, i) =>
-              <p>{ fruit }</p>)}
+              <p>{ fruit }</p>
+            )}
+            <Grid item={props.item}/>
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
