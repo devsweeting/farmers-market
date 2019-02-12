@@ -1,22 +1,33 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Grid from './Grid'
+import Grid from './Grid';
+import { withStyles } from '@material-ui/core/styles';
 
 
+const styles = theme => ({
+  root: {
+    width: '50%',
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+});
 
 
 function Panel( props ){
-
+  const { classes } = props;
 
   return (
-    <div >
+    <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography > {props.month} </Typography>
+          <Typography className={classes.heading}> {props.month} </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
@@ -28,8 +39,11 @@ function Panel( props ){
   );
 }
 
+Panel.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default Panel;
+export default withStyles(styles)(Panel);
 
 
 

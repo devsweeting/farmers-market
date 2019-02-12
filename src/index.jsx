@@ -20,4 +20,4 @@ if (module.hot) {
     render(App);
   });
 }
-/*eslint-disable */
+/*eslint-enable */

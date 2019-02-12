@@ -271,18 +271,13 @@ const availableProduce = [
 ];
 
 
-
 function Body(){
   return (
     <div>
-      <p> Body component</p>
-
       { availableProduce.map( (produce, i) =>
-
         <Panel month={produce.month} item={produce.selection}
           key={i}/>
       ) }
-
     </div>
   );
 }

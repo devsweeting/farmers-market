@@ -3,7 +3,10 @@ import React from 'react';
 function Header(){
   return (
     <div>
-      <p> Header component</p>
+      <nav>
+        <p> Header component</p>
+      </nav>
+
     </div>
 
   );

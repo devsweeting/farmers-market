@@ -2,13 +2,18 @@ import React from 'react';
 import Header from './Header/Header';
 import Body from './Body/Body';
 
+const body = {
+  display: 'flex',
+  justifyContent: 'center'
+}
+
 function App() {
   return (
     <div>
       <div>
         <Header/>
       </div>
-      <div>
+      <div style={body}>
         <Body/>
       </div>
 
@@ -16,6 +21,8 @@ function App() {
       <style jsx global>{`
           body{
             font-family: sans-serif;
+            display: flex,
+            justify-content: center
           }
         `}</style>
     </div>

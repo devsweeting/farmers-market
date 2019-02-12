@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -8,6 +9,9 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 
+/*eslint-enable */
+
+
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -17,7 +21,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    width: 500,
+    width: '100%',
     height: 450,
   },
   icon: {
@@ -25,19 +29,47 @@ const styles = theme => ({
   },
 });
 
+function getImages(query) {
+
+  return new Promise((resolve, reject) => {
+    const url = `https://api.unsplash.com/photos/random?client_id=865ff4a5599ce90421e061967c60702787c7ee51942d8589ddbd4bd256567979&query=${query}&count=1`;
+
+
+    const request = new XMLHttpRequest()
+
+    request.onload = function() {
+      if (this.status === 200) {
+        resolve(request.response);
+      } else { reject(Error(request.statusText) )
+      }
+    }
+    request.open('GET', url, true);
+    request.send();
+  });
+}
+
+function makeImage(image) {
+
+  const imageUrl = getImages(image)
+  imageUrl.then(response => {
+    // console.log(JSON.parse(response)[0].urls.small);
+    return JSON.parse(response)[0].urls.small;
+  });
+}
+
 
 function Grid(props){
   const { classes } = props;
 
+
+
   return (
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div">Produce in season</ListSubheader>
-        </GridListTile>
-        {props.item.map(fruit => (
-          <GridListTile key={fruit.img}>
-            <img src='https://bestapples.com/wp-content/uploads/2018/01/ambrosia-apple.jpg' alt={fruit} />
+        {props.item.map((fruit,i) => (
+
+          <GridListTile key={i}>
+            <img src= {makeImage(fruit)} alt={fruit} />
             <GridListTileBar
               title={fruit}
             />
