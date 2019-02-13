@@ -1,28 +1,24 @@
 import React from 'react';
 import Header from './Header/Header';
 import Body from './Body/Body';
-
-const body = {
-  display: 'flex',
-  justifyContent: 'center'
-}
+import Grid from '@material-ui/core/Grid';
+import Table from './Body/Table';
 
 function App() {
   return (
-    <div>
-      <div>
+    <div >
+      <Grid justify="center">
         <Header/>
-      </div>
-      <div style={body}>
+        <Table/>
         <Body/>
-      </div>
-
+    </Grid>
 
       <style jsx global>{`
           body{
             font-family: sans-serif;
-            display: flex,
-            justify-content: center
+            margin-top: 100px;
+            margin-left: 450px;
+            background-color: slategrey;
           }
         `}</style>
     </div>
